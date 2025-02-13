@@ -6,9 +6,9 @@ pipeline {
     }
 
     environment {
-        PYTHON_HOME = "/usr/local/bin/python"
-        DOCKER_HOME = "/usr/local/bin/docker"
-        PATH = "${PYTHON_HOME}:${DOCKER_HOME}:/usr/bin:/bin:/usr/sbin:/sbin"
+        PYTHON_HOME = "/Library/Frameworks/Python.framework/Versions/3.12/bin"
+        DOCKER_HOME = "/usr/local/bin"
+        PATH = "${PYTHON_HOME}:${DOCKER_HOME}:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
         DOCKER_IMAGE = "flask-app"
     }
 
@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script {
                     echo "Initializing Pipeline..."
-                    sh 'python --version'
+                    sh 'python3 --version'
                     sh 'docker --version'
                 }
             }
@@ -33,7 +33,7 @@ pipeline {
             steps {
                 script {
                     echo "Installing Python dependencies..."
-                    sh 'pip install -r requirements.txt'
+                    sh 'pip3 install -r requirements.txt'
                 }
             }
         }
